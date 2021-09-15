@@ -1,5 +1,6 @@
 package com.bridgelabz.addressbookgradle;
 
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -7,11 +8,15 @@ import java.util.*;
 
 public class AddressBook {
 	private List<Contact> contacts;
+	private HashMap<String, LinkedList<Contact>> contactsByCity;
+	private HashMap<String, LinkedList<Contact>> contactsByState;
 	Scanner sc = new Scanner(System.in);
 	private int numOfContacts = 0;
 	
 	public AddressBook() {
 		this.contacts = new LinkedList<Contact>();
+		this.contactsByCity = new HashMap<>();
+		this.contactsByState = new HashMap<>();
 		this.numOfContacts = 0;
 	}
 	public void findContactInCity(String cityName) {
@@ -110,6 +115,16 @@ public class AddressBook {
 		else {
 			System.out.println("Duplicate");
 		}
+		if(contactsByCity.get(city)==null) {
+			contactsByCity.put(city, new LinkedList<>());
+		}
+		contactsByCity.get(city).add(contact);
+		
+		if(contactsByState.get(state)==null) {
+			contactsByState.put(state, new LinkedList<>());
+		}
+		contactsByState.get(state).add(contact);
+		
 	}
 	
 	private boolean checkIfContactExists(Contact contact) {
