@@ -1,6 +1,5 @@
 package com.bridgelabz.addressbookgradle;
 
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -129,6 +128,16 @@ public class AddressBook {
 	
 	private boolean checkIfContactExists(Contact contact) {
 		return contacts.stream().filter(c -> c.equals(contact)).findFirst().orElse(null) != null;
+	}
+	public void printCountByCity() {
+		contactsByCity.keySet().stream().peek(c -> {
+			System.out.println(c+" : "+contactsByCity.get(c).stream().count());
+		});		
+	}
+	public void printCountByState() {
+		contactsByState.keySet().stream().peek(s -> {
+			System.out.println(s+" : "+contactsByState.get(s).stream().count());
+		});			
 	}
 
 
