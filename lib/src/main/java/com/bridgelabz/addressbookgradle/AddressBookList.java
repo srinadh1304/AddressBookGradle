@@ -26,20 +26,6 @@ public class AddressBookList {
 			addressBook.findContactInState(state);
 		}
 	}
-	public void countByState() {
-		for(AddressBook addressBook : addressBooks.values()) {
-			addressBook.printCountByState();
-		}
-		
-	}
-
-
-	public void countByCity() {
-		for(AddressBook addressBook : addressBooks.values()) {
-			addressBook.printCountByCity();
-		}		
-	}
-	
 	public static void addressMenu(AddressBook addressBook) {
 		Scanner sc = new Scanner(System.in);
 		int option = 0;
@@ -64,6 +50,12 @@ public class AddressBookList {
 
 			}
 			System.out.println();
+		}
+	}
+	public void sortContacts() {
+		
+		for(AddressBook addressBook : addressBooks.values()) {
+			addressBook.sortContacts();
 		}
 	}
 }

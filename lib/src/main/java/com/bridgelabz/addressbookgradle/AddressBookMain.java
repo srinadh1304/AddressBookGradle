@@ -11,7 +11,7 @@ public class AddressBookMain {
 		Scanner sc = new Scanner(System.in);
 		boolean exit1 = true;
 		while(exit1) {
-			System.out.println("Select option 1:Add address Book 2:open Address Book 3.Search in address book 4.Count of persons 3:Exit");
+			System.out.println("Select option 1:Add address Book 2:open Address Book 3.Search in address book 5.sort contacts3:Exit");
 			switch(sc.nextInt()) {
 			case 1: 
 				System.out.println("Enter the address book name");
@@ -43,16 +43,8 @@ public class AddressBookMain {
 				else
 					System.out.println("Invalid choice");
 				break;
-			case 4:
-				System.out.println("Options: 1:Count by city 2.Count by state");
-				int option = sc.nextInt();
-				if(option==1)
-					addressBookList.countByCity();
-				else if(option==2)
-					addressBookList.countByState();
-				else
-					System.out.println("Invalid choice");
-				break;
+			case 5:
+				addressBookList.sortContacts();
 			default:
 				exit1 = false;
 

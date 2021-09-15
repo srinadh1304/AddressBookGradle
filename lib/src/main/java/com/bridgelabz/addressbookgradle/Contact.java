@@ -1,6 +1,6 @@
 package com.bridgelabz.addressbookgradle;
 
-public class Contact {
+public class Contact implements Comparable<Contact>{
 	private String firstName;
 	private String lastName;
 	private String city;
@@ -75,6 +75,9 @@ public class Contact {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	@Override
+	public int compareTo(Contact c) {
+		return this.firstName.compareTo(c.getFirstName());
+	}
 	
 }
-
