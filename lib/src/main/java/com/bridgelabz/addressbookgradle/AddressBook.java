@@ -1,5 +1,4 @@
 package com.bridgelabz.addressbookgradle;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -54,6 +53,13 @@ public class AddressBook {
 		System.out.println(contact.getFirstName()+" "+contact.getLastName()+" "+contact.getCity()+" "+contact.getState()+" "+contact.getZip()+" "+contact.getPhoneNumber()+" "+contact.getEmail());
 		
 	}
+	public void deleteContact() {
+		System.out.println("Enter the first name of the contact to delete");
+		String firstName = sc.next();
+		addressBook.remove(firstName.toLowerCase());
+		System.out.println("Contact is deleted");
+	}
+	
 	public void addContact() {
 		System.out.println("Enter contact details");
 		System.out.println("Enter first name");
