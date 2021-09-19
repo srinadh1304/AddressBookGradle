@@ -45,7 +45,7 @@ public class AddressBookList {
 		int option = 0;
 		boolean exit = true;
 		while(exit) {
-			System.out.println("Select option \n1: Add Contact.  \n2: Edit Existing Contact. \n3:Delete contact.");
+			System.out.println("Select option \n1: Add Contact.  \n2: Edit Existing Contact. \n3:Delete contact.\n4:Write file \n5:Read file ");
 			option  = sc.nextInt();
 			switch(option) {
 			case 1 :
@@ -58,6 +58,12 @@ public class AddressBookList {
 			case 3:
 				System.out.println("Enter the details to edit: ");
 				addressBook.deleteContact();
+				break;
+			case 4:
+				addressBook.writeDataToFile();
+				break;
+			case 5:
+				addressBook.readDataFromFile();
 				break;
 			default:
 				exit = false;
