@@ -79,5 +79,9 @@ public class Contact implements Comparable<Contact>{
 	public int compareTo(Contact c) {
 		return this.firstName.compareTo(c.getFirstName());
 	}
+	@Override
+    public String toString() {
+    	return "firstName: "+this.getFirstName()+", SecondName: "+ this.getLastName()+", City: "+this.getCity() +", State: "+this.getState()+", Phone number: "+this.getPhoneNumber()+", email: "+this.getEmail();
+    }
 	
 }
