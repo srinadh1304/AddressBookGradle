@@ -3,6 +3,9 @@ package com.bridgelabz.addressbookgradle;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class AddressBook {
@@ -12,6 +15,32 @@ public class AddressBook {
 	Scanner sc = new Scanner(System.in);
 	private int numOfContacts = 0;
 	
+	public void writeDataToFile() {
+		System.out.print("Writing data to  file ");
+		StringBuffer stringBuffer = new StringBuffer();
+		contacts.forEach(contact -> {
+			String contactDetails = contact.toString().concat("\n");
+			stringBuffer.append(contactDetails);
+		});
+		
+		try {
+			Files.write(Paths.get("AddressBook.txt"),stringBuffer.toString().getBytes());
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void readDataFromFile() {
+		System.out.println("Reading from the file");
+		try {
+			Files.lines(Paths.get("AddressBook.txt"))
+				 .map(contact -> contact.trim())
+				 .forEach(contact -> System.out.println(contact));
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
 	public AddressBook() {
 		this.contacts = new LinkedList<Contact>();
 		this.contactsByCity = new HashMap<>();
