@@ -9,9 +9,9 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class AddressBook {
-	private List<Contact> contacts;
-	private HashMap<String, LinkedList<Contact>> contactsByCity;
-	private HashMap<String, LinkedList<Contact>> contactsByState;
+	private static List<Contact> contacts;
+	private static HashMap<String, LinkedList<Contact>> contactsByCity;
+	private static HashMap<String, LinkedList<Contact>> contactsByState;
 	Scanner sc = new Scanner(System.in);
 	private int numOfContacts = 0;
 	
@@ -140,42 +140,27 @@ public class AddressBook {
 		}
 	}
 	
-	public void addContact() {
-		System.out.println("Enter contact details");
-		System.out.println("Enter first name");
-		String firstName = sc.next();
-		System.out.println("Enter last name");
-		String lastName = sc.next();
-		System.out.println("Enter city");
-		String city = sc.next();
-		System.out.println("Enter state");
-		String state = sc.next();
-		System.out.println("Enter zip");
-		String zip = sc.next();
-		System.out.println("Enter phone number");
-		String phoneNumber = sc.next();
-		System.out.println("Enter email");
-		String email = sc.next();
-		Contact contact = new Contact(firstName, lastName, city, state, zip, phoneNumber, email);
+	public static void addContact(Contact contact) {
+		
 		if(!checkIfContactExists(contact)) {
 			contacts.add(contact);
 		}
 		else {
 			System.out.println("Duplicate");
 		}
-		if(contactsByCity.get(city)==null) {
-			contactsByCity.put(city, new LinkedList<>());
+		if(contactsByCity.get(contact.getCity())==null) {
+			contactsByCity.put(contact.getCity(), new LinkedList<>());
 		}
-		contactsByCity.get(city).add(contact);
+		contactsByCity.get(contact.getCity()).add(contact);
 		
-		if(contactsByState.get(state)==null) {
-			contactsByState.put(state, new LinkedList<>());
+		if(contactsByState.get(contact.getState())==null) {
+			contactsByState.put(contact.getState(), new LinkedList<>());
 		}
-		contactsByState.get(state).add(contact);
+		contactsByState.get(contact.getState()).add(contact);
 		
 	}
 	
-	private boolean checkIfContactExists(Contact contact) {
+	private static boolean checkIfContactExists(Contact contact) {
 		return contacts.stream().filter(c -> c.equals(contact)).findFirst().orElse(null) != null;
 	}
 	public void printCountByCity() {
@@ -189,5 +174,6 @@ public class AddressBook {
 		});			
 	}
 
+	
 
 }

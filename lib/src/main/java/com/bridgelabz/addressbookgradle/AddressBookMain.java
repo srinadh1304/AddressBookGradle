@@ -75,5 +75,27 @@ public class AddressBookMain {
 		}
 
 	}
+
+	public static void addContact(AddressBook addressBook) {
+		Scanner scannerObject=new Scanner(System.in);
+		System.out.println("Enter contact details");
+		System.out.println("Enter first name");
+		String firstName = scannerObject.next();
+		System.out.println("Enter last name");
+		String lastName = scannerObject.next();
+		System.out.println("Enter city");
+		String city = scannerObject.next();
+		System.out.println("Enter state");
+		String state = scannerObject.next();
+		System.out.println("Enter zip");
+		String zip = scannerObject.next();
+		System.out.println("Enter phone number");
+		String phoneNumber = scannerObject.next();
+		System.out.println("Enter email");
+		String email = scannerObject.next();
+		Contact contact = new Contact(firstName, lastName, city, state, zip, phoneNumber, email);
+		addressBook.addContact(contact);
+		
+	}
 	
 }

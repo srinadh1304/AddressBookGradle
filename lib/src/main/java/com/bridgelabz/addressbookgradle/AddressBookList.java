@@ -49,7 +49,7 @@ public class AddressBookList {
 			option  = sc.nextInt();
 			switch(option) {
 			case 1 :
-				addressBook.addContact();
+				AddressBookMain.addContact(addressBook);
 				break;
 			case 2 :
 				System.out.println("Enter the details to edit");
