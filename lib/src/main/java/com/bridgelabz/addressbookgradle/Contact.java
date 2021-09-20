@@ -81,7 +81,7 @@ public class Contact implements Comparable<Contact>{
 	}
 	@Override
     public String toString() {
-    	return "firstName: "+this.getFirstName()+", SecondName: "+ this.getLastName()+", City: "+this.getCity() +", State: "+this.getState()+", Phone number: "+this.getPhoneNumber()+", email: "+this.getEmail();
+    	return "First Name: "+this.getFirstName()+", Second Name: "+ this.getLastName()+", City: "+this.getCity() +", State: "+this.getState()+", Phone Number: "+this.getPhoneNumber()+", Email: "+this.getEmail()+"\n";
     }
 	
 }

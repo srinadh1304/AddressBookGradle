@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class AddressBookList {
+	public enum IOService {
+		CONSOLE_IO, FILE_IO
+	}
 	private static HashMap<String, AddressBook> addressBooks;
 	public AddressBookList() {
 		this.addressBooks = new HashMap<>();
@@ -45,7 +48,7 @@ public class AddressBookList {
 		int option = 0;
 		boolean exit = true;
 		while(exit) {
-			System.out.println("Select option \n1: Add Contact.  \n2: Edit Existing Contact. \n3:Delete contact.\n4:Write file \n5:Read file ");
+			System.out.println("Select option \n1: Add Contact.  \n2: Edit Existing Contact. \n3: Delete contact.\n4: Write data\n5. Print data \n6. Exit");
 			option  = sc.nextInt();
 			switch(option) {
 			case 1 :
@@ -60,7 +63,11 @@ public class AddressBookList {
 				addressBook.deleteContact();
 				break;
 			case 4:
-				addressBook.writeDataToFile();
+				System.out.println("Enter \n1.To console\n2.To file");
+				if(sc.nextInt()==1)
+					addressBook.writeDataToFile(IOService.CONSOLE_IO);
+				else
+					addressBook.writeDataToFile(IOService.FILE_IO);
 				break;
 			case 5:
 				addressBook.readDataFromFile();

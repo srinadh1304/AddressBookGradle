@@ -1,2 +1,0 @@
-firstName: srinadh, SecondName: t, City: fjkd, State: fjk, Phone number: 342, email: jdsa
-firstName: chandra, SecondName: fjkd, City: fda, State: fdsa, Phone number: 543, email: fa
