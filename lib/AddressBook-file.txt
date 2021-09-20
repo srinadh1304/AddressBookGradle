@@ -1,3 +1,2 @@
-First Name: srinadh, Second Name: t, City: sf, State: fd, Phone Number: 543, Email: fa
-First Name: chandra, Second Name: fda, City: fda, State: fda, Phone Number: 52, Email: fsad
-
+First Name: Srinadh, Second Name: t, City: Tenali, State: Andhra, Phone Number: 9290090032, Email: srinadh@gmail.com
+First Name: Chandra, Second Name: t, City: Tenali, State: Andhra, Phone Number: 8463934331, Email: chandra@gmail.com
