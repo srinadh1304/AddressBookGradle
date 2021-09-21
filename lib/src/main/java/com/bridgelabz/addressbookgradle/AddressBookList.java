@@ -48,7 +48,7 @@ public class AddressBookList {
 		int option = 0;
 		boolean exit = true;
 		while(exit) {
-			System.out.println("Select option \n1: Add Contact.  \n2: Edit Existing Contact. \n3: Delete contact.\n4: Write data\n5. Print data \n6. Write data to csv\n7. Read data from csv \n8. Exit");
+			System.out.println("Select option \n1: Add Contact.  \n2: Edit Existing Contact. \n3: Delete contact.\n4: Write data\n5. Print data \n6. Write data to csv\n7. Read data from csv \n8. Write data to JSON\n9. Read data from JSON\n10. Exit");
 			option  = sc.nextInt();
 			switch(option) {
 			case 1 :
@@ -77,6 +77,11 @@ public class AddressBookList {
 				break;
 			case 7:
 				addressBook.readDataFromCsvFile();
+			case 8:
+				addressBook.writeDataToJson();
+				break;
+			case 9:
+				addressBook.readDataFromJson();
 			default:
 				exit = false;
 
