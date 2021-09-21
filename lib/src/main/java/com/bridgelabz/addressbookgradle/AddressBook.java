@@ -6,9 +6,6 @@ import java.util.Scanner;
 
 import com.bridgelabz.addressbookgradle.AddressBookList.IOService;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 
 public class AddressBook {
@@ -166,6 +163,15 @@ public class AddressBook {
 		contactsByState.keySet().stream().peek(s -> {
 			System.out.println(s+" : "+contactsByState.get(s).stream().count());
 		});			
+	}
+
+	public void writeDataToJson() {
+		new AddressBookIo().writeDatatoJSON(contacts);
+	}
+
+	public void readDataFromJson() {
+		new AddressBookIo().readDataFromJSON();
+		
 	}
 
 	
