@@ -29,6 +29,12 @@ public class AddressBook {
 	public void readDataFromFile() {
 		new AddressBookIo().printData();
 	}
+	public void writeDataToCsvFile() {
+		new AddressBookIo().writeDataToCsv(contacts);
+	}
+	public void readDataFromCsvFile() {
+		new AddressBookIo().readFromCsv();
+	}
 	public AddressBook() {
 		this.contacts = new LinkedList<Contact>();
 		this.contactsByCity = new HashMap<>();
