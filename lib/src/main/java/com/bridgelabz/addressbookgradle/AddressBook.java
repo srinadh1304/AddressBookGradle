@@ -3,12 +3,10 @@ package com.bridgelabz.addressbookgradle;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
-
 import com.bridgelabz.addressbookgradle.AddressBookList.IOService;
-
 import java.util.*;
 
-public class AddressBook {
+public class AddressBook implements AddressBookIF {
 	private static List<Contact> contacts;
 	private static HashMap<String, LinkedList<Contact>> contactsByCity;
 	private static HashMap<String, LinkedList<Contact>> contactsByState;
@@ -21,6 +19,7 @@ public class AddressBook {
 		
 		else if(ioService.equals(IOService.FILE_IO))
 			new AddressBookIo().writeData(contacts);
+		
 	}
 	
 	public void readDataFromFile() {
@@ -131,7 +130,7 @@ public class AddressBook {
 		}
 	}
 	
-	public static void addContact(Contact contact) {
+	public void addContact(Contact contact) {
 		
 		if(!checkIfContactExists(contact)) {
 			contacts.add(contact);
@@ -151,7 +150,7 @@ public class AddressBook {
 		
 	}
 	
-	private static boolean checkIfContactExists(Contact contact) {
+	public boolean checkIfContactExists(Contact contact) {
 		return contacts.stream().filter(c -> c.equals(contact)).findFirst().orElse(null) != null;
 	}
 	public void printCountByCity() {
@@ -173,7 +172,5 @@ public class AddressBook {
 		new AddressBookIo().readDataFromJSON();
 		
 	}
-
-	
 
 }
