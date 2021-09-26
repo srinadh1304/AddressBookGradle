@@ -1,7 +1,5 @@
 package com.bridgelabz.addressbookgradle;
 
-import java.util.Scanner;
-
 import com.bridgelabz.addressbookgradle.AddressBookList.IOService;
 
 

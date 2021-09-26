@@ -19,6 +19,10 @@ public class AddressBook implements AddressBookIF {
 		
 		else if(ioService.equals(IOService.FILE_IO))
 			new AddressBookIo().writeData(contacts);
+		else if(ioService.equals(IOService.JSON_IO))
+			writeDataToJson();
+		else if(ioService.equals(IOService.CSV_IO))
+		writeDataToCsvFile();
 		
 	}
 	
