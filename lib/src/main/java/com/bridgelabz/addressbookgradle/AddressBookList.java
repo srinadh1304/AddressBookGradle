@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class AddressBookList {
 	public enum IOService {
-		CONSOLE_IO, FILE_IO
+		CONSOLE_IO, FILE_IO, CSV_IO,JSON_IO
 	}
 	private static HashMap<String, AddressBook> addressBooks;
 	public AddressBookList() {
@@ -48,7 +48,7 @@ public class AddressBookList {
 		int option = 0;
 		boolean exit = true;
 		while(exit) {
-			System.out.println("Select option \n1: Add Contact.  \n2: Edit Existing Contact. \n3: Delete contact.\n4: Write data\n5. Print data \n6. Write data to csv\n7. Read data from csv \n8. Write data to JSON\n9. Read data from JSON\n10. Exit");
+			System.out.println("Select option \n1: Add Contact.  \n2: Edit Existing Contact. \n3: Delete contact.\n4: Write data\n5. Read data \n6. Exit");
 			option  = sc.nextInt();
 			switch(option) {
 			case 1 :
@@ -63,25 +63,28 @@ public class AddressBookList {
 				addressBook.deleteContact();
 				break;
 			case 4:
-				System.out.println("Enter \n1.To console\n2.To file");
-				if(sc.nextInt()==1)
+				System.out.println("Enter \n1.To console\n2.To text file \n3.To CSV file \n4.To json file");
+				int choice = sc.nextInt();
+				if(choice==1)
 					addressBook.writeDataToFile(IOService.CONSOLE_IO);
-				else
+				else if(choice==2)
 					addressBook.writeDataToFile(IOService.FILE_IO);
+				else if(choice==3)
+					addressBook.writeDataToFile(IOService.CSV_IO);
+				else 
+					addressBook.writeDataToFile(IOService.JSON_IO);
 				break;
 			case 5:
-				addressBook.readDataFromFile();
+				System.out.println("Enter \n1.From text file \n2.from csv file \n3.from json file");
+				int opt=sc.nextInt();
+				if(opt==1)
+					addressBook.readDataFromFile();
+				else if(opt==2)
+					addressBook.readDataFromCsvFile();
+				else
+					addressBook.readDataFromJson();
 				break;
-			case 6:
-				addressBook.writeDataToCsvFile();
-				break;
-			case 7:
-				addressBook.readDataFromCsvFile();
-			case 8:
-				addressBook.writeDataToJson();
-				break;
-			case 9:
-				addressBook.readDataFromJson();
+			
 			default:
 				exit = false;
 
