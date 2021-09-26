@@ -23,6 +23,7 @@ public class AddressBookIo {
 	public static String ADDRESSBOOK_FILE_NAME = "AddressBook-file.txt";
 	public static String ADDRESSBOOK_CSV_FILE_NAME = "AddressBook-CSV.csv";
 	public static String ADDRESSBOOK_JSON_FILE_NAME = "AddressBook-JSON.json";
+	
 	public void writeData(List<Contact> contacts) {
 
 		StringBuffer addressBuffer = new StringBuffer();
