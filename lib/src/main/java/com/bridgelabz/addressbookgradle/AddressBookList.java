@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class AddressBookList {
 	public enum IOService {
-		CONSOLE_IO, FILE_IO, CSV_IO,JSON_IO,DB_IO
+		CONSOLE_IO, FILE_IO, CSV_IO,JSON_IO
 	}
 	private static HashMap<String, AddressBook> addressBooks;
 	public AddressBookList() {
