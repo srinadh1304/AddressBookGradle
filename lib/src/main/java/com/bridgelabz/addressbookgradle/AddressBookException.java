@@ -2,7 +2,7 @@ package com.bridgelabz.addressbookgradle;
 
 public class AddressBookException extends RuntimeException  {
 	enum ExceptionType {
-        FAILED_TO_CONNECT, CANNOT_EXECUTE_QUERY, UPDATE_FAILED
+        CANNOT_EXECUTE_QUERY
     }
     ExceptionType exceptionType;
 
