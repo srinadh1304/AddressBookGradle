@@ -8,6 +8,8 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.bridgelabz.addressbookgradle.AddressBookList.IOService;
+
 public class AddressBookTest {
 	
 
@@ -27,6 +29,22 @@ public class AddressBookTest {
 		AddressBookIo addressBookIO = new AddressBookIo();
 		addressBookIO.writeData(contact);
 		Assert.assertEquals(2, addressBookIO.countEntries());
+	}
+	@Test
+	public void givenAddressBookInDB_WhenRetrived_ShouldReturnCount()
+	{
+		AddressBookDBService addressBook = new AddressBookDBService();
+		long count  = addressBook.readData();
+		Assert.assertEquals(8, count);
+	}
+	
+	
+	@Test
+	public void givenACity_WhenQueried_ShouldGetNumberOfContacts()
+	{
+		AddressBookDBService addressBook = new AddressBookDBService();
+		int count  = addressBook.getNumberOfContactsInACity("Bengaluru");
+		Assert.assertEquals(5, count);
 	}
 	
 	
