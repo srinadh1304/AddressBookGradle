@@ -3,7 +3,7 @@ package com.bridgelabz.addressbookgradle;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
+import static org.junit.Assert.assertTrue;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import org.junit.Assert;
@@ -28,7 +28,8 @@ public class AddressBookDBTest {
 		AddressBookDBService addressBook = new AddressBookDBService();
 		long initialSize  = addressBook.readData();
 		addressBook.writeIntoContact(contactObject);
-		Assert.assertEquals(initialSize+1, 7);
+		long updatedSize=addressBook.readData();
+		Assert.assertEquals(initialSize+1, updatedSize);
 	}
 	@Test
 	public void givenContactIdAndPhonenumber_WhenUpdated_shouldReturnOne()
@@ -59,5 +60,14 @@ public class AddressBookDBTest {
 		HashMap<String,ArrayList<String>> contactsByAddressBook = addressBook.getContactsByState("Maharashtra");
 		System.out.println(contactsByAddressBook);
 		Assert.assertEquals(2, (contactsByAddressBook.get("address_book1").size()+contactsByAddressBook.get("address_book2").size()));
+	}
+	@Test
+	public void givenEmployeePayrollInDB_whenAddedShouldMatchDB() {
+		ContactPojo contact = new ContactPojo("Mark","Wade","7894561230","m@m.com");
+		AddressBookDBService address=new AddressBookDBService();
+		long initialSize  = address.readData();
+		address.writeIntoContact(contact);
+		long updatedSize=address.readData();
+		Assert.assertEquals(initialSize+1, updatedSize);
 	}
 }
