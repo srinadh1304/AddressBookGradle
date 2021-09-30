@@ -3,44 +3,56 @@ package com.bridgelabz.addressbookgradle;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
-import com.bridgelabz.addressbookgradle.AddressBookList.IOService;
 import java.util.*;
 
+import com.bridgelabz.addressbookgradle.IOServiceEnum.IOService;
 public class AddressBook implements AddressBookIF {
+	
 	private static List<Contact> contacts;
 	private static HashMap<String, LinkedList<Contact>> contactsByCity;
 	private static HashMap<String, LinkedList<Contact>> contactsByState;
+	
+	public AddressBook() {
+		AddressBook.contacts = new LinkedList<Contact>();
+		AddressBook.contactsByCity = new HashMap<>();
+		AddressBook.contactsByState = new HashMap<>();
+		this.numOfContacts = 0;
+	}
+	
 	Scanner sc = new Scanner(System.in);
 	private int numOfContacts = 0;
-	
+
 	public void writeDataToFile(IOService ioService) {
 		if(ioService.equals(IOService.CONSOLE_IO))
 			System.out.println("\nWriting  AddressBook to  Console\n" + contacts);
-		
+
 		else if(ioService.equals(IOService.FILE_IO))
-			new AddressBookIo().writeData(contacts);
+			new AddressBookFileIO().writeData(contacts);
 		else if(ioService.equals(IOService.JSON_IO))
 			writeDataToJson();
 		else if(ioService.equals(IOService.CSV_IO))
-		writeDataToCsvFile();
-		
+			writeDataToCsvFile();
+
 	}
-	
+
 	public void readDataFromFile() {
-		new AddressBookIo().printData();
+		new AddressBookFileIO().printData();
 	}
 	public void writeDataToCsvFile() {
-		new AddressBookIo().writeDataToCsv(contacts);
+		new AddressBookCSVIO().writeDataToCsv(contacts);
 	}
 	public void readDataFromCsvFile() {
-		new AddressBookIo().readFromCsv();
+		new AddressBookCSVIO().readFromCsv();
 	}
-	public AddressBook() {
-		this.contacts = new LinkedList<Contact>();
-		this.contactsByCity = new HashMap<>();
-		this.contactsByState = new HashMap<>();
-		this.numOfContacts = 0;
+	public void writeDataToJson() {
+		new AddressBookJSONIO().writeDatatoJSON(contacts);
 	}
+
+	public void readDataFromJson() {
+		new AddressBookJSONIO().readDataFromJSON();
+
+	}
+
 	public void findContactInCity(String cityName) {
 		contacts.stream().filter(c -> c.getCity().equals(cityName)).peek(c -> {
 			System.out.println(c.getFirstName()+" : "+cityName);
@@ -58,20 +70,20 @@ public class AddressBook implements AddressBookIF {
 	}
 	public  void sortByZip() {
 		contacts.stream()
-					 .sorted((contact1,contact2) -> contact1.getZip().compareTo(contact2.getZip()))
-					 .forEach(System.out::println);
+		.sorted((contact1,contact2) -> contact1.getZip().compareTo(contact2.getZip()))
+		.forEach(System.out::println);
 	}
 	public  void sortByCity() {
 		contacts.stream()
-					 .sorted((contact1,contact2) -> contact1.getCity().compareTo(contact2.getCity()))
-					 .forEach(System.out::println);
+		.sorted((contact1,contact2) -> contact1.getCity().compareTo(contact2.getCity()))
+		.forEach(System.out::println);
 	}
 	public  void sortByState() {
 		contacts.stream()
-					 .sorted((contact1,contact2) -> contact1.getState().compareTo(contact2.getState()))
-					 .forEach(System.out::println);
+		.sorted((contact1,contact2) -> contact1.getState().compareTo(contact2.getState()))
+		.forEach(System.out::println);
 	}
-	
+
 
 	public void editContact() {
 		System.out.println("Enter first name of person you want edit:");
@@ -116,11 +128,11 @@ public class AddressBook implements AddressBookIF {
 			break;
 		default:
 			System.err.println("Invalid Option");
-			
+
 		}
 		System.out.println("Editing done, the new details are: ");
 		System.out.println(contactToChange.getFirstName()+" "+contactToChange.getLastName()+" "+contactToChange.getCity()+" "+contactToChange.getState()+" "+contactToChange.getZip()+" "+contactToChange.getPhoneNumber()+" "+contactToChange.getEmail());
-		
+
 	}
 	public void deleteContact() {
 		System.out.println("Enter first name number of person you want to delete:");
@@ -133,9 +145,9 @@ public class AddressBook implements AddressBookIF {
 			}
 		}
 	}
-	
+
 	public void addContact(Contact contact) {
-		
+
 		if(!checkIfContactExists(contact)) {
 			contacts.add(contact);
 		}
@@ -146,14 +158,14 @@ public class AddressBook implements AddressBookIF {
 			contactsByCity.put(contact.getCity(), new LinkedList<>());
 		}
 		contactsByCity.get(contact.getCity()).add(contact);
-		
+
 		if(contactsByState.get(contact.getState())==null) {
 			contactsByState.put(contact.getState(), new LinkedList<>());
 		}
 		contactsByState.get(contact.getState()).add(contact);
-		
+
 	}
-	
+
 	public boolean checkIfContactExists(Contact contact) {
 		return contacts.stream().filter(c -> c.equals(contact)).findFirst().orElse(null) != null;
 	}
@@ -168,13 +180,6 @@ public class AddressBook implements AddressBookIF {
 		});			
 	}
 
-	public void writeDataToJson() {
-		new AddressBookIo().writeDatatoJSON(contacts);
-	}
-
-	public void readDataFromJson() {
-		new AddressBookIo().readDataFromJSON();
-		
-	}
+	
 
 }
