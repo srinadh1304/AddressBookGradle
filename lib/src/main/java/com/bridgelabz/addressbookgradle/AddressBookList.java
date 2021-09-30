@@ -2,11 +2,9 @@ package com.bridgelabz.addressbookgradle;
 
 import java.util.HashMap;
 import java.util.Scanner;
-
+import com.bridgelabz.addressbookgradle.IOServiceEnum.IOService;
 public class AddressBookList {
-	public enum IOService {
-		CONSOLE_IO, FILE_IO, CSV_IO,JSON_IO
-	}
+	
 	private static HashMap<String, AddressBook> addressBooks;
 	public AddressBookList() {
 		this.addressBooks = new HashMap<>();
