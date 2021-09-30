@@ -41,7 +41,7 @@ public class AddressBookDBTest {
 		AddressBookDBService addressBook = new AddressBookDBService();
 		String date1 = "2017-08-02";
 		String date2 = "2019-09-09";
-		long count = addressBook.getEmployeeInADateRange(date1,date2);
+		long count = addressBook.getContactsInDateRange(date1,date2);
 		Assert.assertEquals(5, count);
 	}
 }
