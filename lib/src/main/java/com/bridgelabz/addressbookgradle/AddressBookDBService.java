@@ -70,7 +70,7 @@ public class AddressBookDBService {
 	private void prepareStatementForAddressBook() {
 		try {
 			Connection connection = this.getConnection();
-			String sqlStatement = "SELECT city,count(*) as 'count' FROM address_book WHERE city = ? GROUP BY city;";
+			String sqlStatement = "update contacts set phoneNumber = ? where contact_id = ?;";
 			addressBookPreparedStatement = connection.prepareStatement(sqlStatement);
 		}
 		catch(SQLException e) {
@@ -102,6 +102,21 @@ public class AddressBookDBService {
 		}
 
 	}
-
-
+	public int updatePhonenumberOfContact(String phoneNumber, int id) {
+		int count = 0;
+		if(this.addressBookPreparedStatement == null) {
+			this.prepareStatementForAddressBook();
+		}
+		try {
+			addressBookPreparedStatement.setString(1, phoneNumber);
+			addressBookPreparedStatement.setInt(2, id);
+			count = addressBookPreparedStatement.executeUpdate();
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+			throw new AddressBookException(AddressBookException.ExceptionType.CANNOT_EXECUTE_QUERY, "Failed to execute query");
+		}
+		return count;
+	}
+	
 }
