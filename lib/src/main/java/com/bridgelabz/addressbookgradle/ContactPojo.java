@@ -21,6 +21,13 @@ public class ContactPojo {
 		this.email = email;
 		this.date_added=date_added;
 	}
+	public ContactPojo(String firstName, String lastName, String phoneNumber, String email) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
+	}
 	public int getContact_id() {
 		return contact_id;
 	}
