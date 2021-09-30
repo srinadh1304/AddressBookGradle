@@ -6,8 +6,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+
 public class AddressBookDBService {
 	private PreparedStatement addressBookPreparedStatement;
 	private static AddressBookDBService addressBookDBService;
@@ -27,6 +30,7 @@ public class AddressBookDBService {
 				String email = result.getString("email");
 				System.out.println(" First Name: "+firstName+" Last Name: "+lastName+"  Phone Number"+phoneNumber+" email"+email+" ");
 				count=count+1;
+
 
 			}
 		} 
@@ -82,15 +86,17 @@ public class AddressBookDBService {
 		Connection connection = null;
 		try {
 			connection = this.getConnection();
+			connection.setAutoCommit(false);
 		}
 		catch(Exception e) {
 			throw new AddressBookException(AddressBookException.ExceptionType.FAILED_TO_CONNECT, "Connection failed");
 		}
 
-		try(Statement statement = connection.createStatement()){
-			String sql = String.format("insert into contacts(firstName, lastName, phoneNumber, email) values ('%s','%s','%s','%s');", contact.getFirstName(),contact.getLastName()
-					,contact.getPhoneNumber(),contact.getEmail());
-			statement.execute(sql);
+		try{
+			Statement statement = connection.createStatement();
+			String sql = String.format("insert into contacts(firstName, lastName, phoneNumber, email, date_added) values ('%s','%s','%s','%s','%s');", contact.getFirstName(),contact.getLastName()
+					,contact.getPhoneNumber(),contact.getEmail(),contact.getDate_added());
+			statement.executeUpdate(sql);
 		} 
 		catch (SQLException e) {
 			try {
@@ -118,5 +124,27 @@ public class AddressBookDBService {
 		}
 		return count;
 	}
-	
+	public long getContactsInDateRange(String date1, String date2){
+		String sql = String.format("select * from contacts where date_added between '%s' and '%s'",date1,date2);
+		long count=0;
+		try(Connection connection = this.getConnection()) {
+			Statement statement = connection.createStatement();
+			ResultSet result = statement.executeQuery(sql);
+
+			while(result.next()) {
+				System.out.println("Contacts in date range");
+				String firstName = result.getString("firstName");
+				String lastName = result.getString("lastName");
+				String phoneNumber = result.getString("phoneNumber");
+				String email = result.getString("email");
+				System.out.println(" First Name: "+firstName+" Last Name: "+lastName+"  Phone Number"+phoneNumber+" email"+email+" ");
+				count=count+1;
+
+			}
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
 }
