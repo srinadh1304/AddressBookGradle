@@ -1,6 +1,6 @@
 package com.bridgelabz.addressbookgradle;
 
-import com.bridgelabz.addressbookgradle.AddressBookList.IOService;
+import com.bridgelabz.addressbookgradle.IOServiceEnum.IOService;;
 
 
 public interface AddressBookIF {
