@@ -7,7 +7,6 @@ public class AddressBookMain {
 	
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book System");
-		new AddressBookDBService().readData();
 		AddressBookMain addressBookMain = new AddressBookMain();
 		Scanner sc = new Scanner(System.in);
 		boolean exit1 = true;

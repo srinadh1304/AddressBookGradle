@@ -11,6 +11,7 @@ public class AddressBook implements AddressBookIF {
 	private static List<Contact> contacts;
 	private static HashMap<String, LinkedList<Contact>> contactsByCity;
 	private static HashMap<String, LinkedList<Contact>> contactsByState;
+	private AddressBookDBService addressBookDBService;
 	
 	public AddressBook() {
 		AddressBook.contacts = new LinkedList<Contact>();
@@ -32,9 +33,10 @@ public class AddressBook implements AddressBookIF {
 			writeDataToJson();
 		else if(ioService.equals(IOService.CSV_IO))
 			writeDataToCsvFile();
+		
 
 	}
-
+	
 	public void readDataFromFile() {
 		new AddressBookFileIO().printData();
 	}
@@ -83,7 +85,7 @@ public class AddressBook implements AddressBookIF {
 		.sorted((contact1,contact2) -> contact1.getState().compareTo(contact2.getState()))
 		.forEach(System.out::println);
 	}
-
+	
 
 	public void editContact() {
 		System.out.println("Enter first name of person you want edit:");
