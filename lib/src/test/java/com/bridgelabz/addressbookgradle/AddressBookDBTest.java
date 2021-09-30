@@ -26,4 +26,12 @@ public class AddressBookDBTest {
 		long updatedSize = addressBook.readData();
 		Assert.assertEquals(initialSize+1, updatedSize);
 	}
+	@Test
+	public void givenContactIdAndPhonenumber_WhenUpdated_shouldReturnOne()
+	{
+		AddressBookDBService addressBook = new AddressBookDBService();
+		addressBook.readData();
+		int count=addressBook.updatePhonenumberOfContact("9290090032", 1);
+		Assert.assertEquals(1,count);
+	}
 }
