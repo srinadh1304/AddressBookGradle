@@ -1,5 +1,7 @@
 package com.bridgelabz.addressbookgradle;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import java.time.LocalDate;
@@ -43,5 +45,19 @@ public class AddressBookDBTest {
 		String date2 = "2019-09-09";
 		long count = addressBook.getContactsInDateRange(date1,date2);
 		Assert.assertEquals(5, count);
+	}
+	@Test
+	public void givenCity_FindContactsInThatCity_ShouldReturnCount() {
+		AddressBookDBService addressBook = new AddressBookDBService();
+		HashMap<String,ArrayList<String>> contactsByAddressBook = addressBook.getContactsByCity("Bengaluru");
+		System.out.println(contactsByAddressBook);
+		Assert.assertEquals(2, contactsByAddressBook.get("address_book1").size());
+	}
+	@Test
+	public void givenState_FindContactsInThatState_ShouldReturnCount() {
+		AddressBookDBService addressBook = new AddressBookDBService();
+		HashMap<String,ArrayList<String>> contactsByAddressBook = addressBook.getContactsByState("Maharashtra");
+		System.out.println(contactsByAddressBook);
+		Assert.assertEquals(2, (contactsByAddressBook.get("address_book1").size()+contactsByAddressBook.get("address_book2").size()));
 	}
 }
