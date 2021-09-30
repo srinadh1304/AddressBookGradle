@@ -84,29 +84,18 @@ public class AddressBookDBService {
 	}
 
 	public void writeIntoContact(ContactPojo contact) {
-		Connection connection = null;
-		try {
-			connection = this.getConnection();
-			connection.setAutoCommit(false);
-		}
-		catch(Exception e) {
-			throw new AddressBookException(AddressBookException.ExceptionType.FAILED_TO_CONNECT, "Connection failed");
-		}
-
-		try{
+		String sql0 = String.format("INSERT INTO `contacts`\n"
+				+ "(`firstName`,`lastName`,`phoneNumber`,`email`)\n"
+				+ "VALUES ('%s','%s','%s','%s');",contact.getFirstName(),contact.getLastName(),contact.getPhoneNumber(),contact.getEmail());
+		List<ContactPojo> addressBookData = new ArrayList<ContactPojo>();
+		try (Connection connection = this.getConnection()) {
 			Statement statement = connection.createStatement();
-			String sql = String.format("insert into contacts(firstName, lastName, phoneNumber, email, date_added) values ('%s','%s','%s','%s','%s');", contact.getFirstName(),contact.getLastName()
-					,contact.getPhoneNumber(),contact.getEmail(),contact.getDate_added());
-			statement.executeUpdate(sql);
-		} 
-		catch (SQLException e) {
-			try {
-				connection.rollback();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-			throw new AddressBookException(AddressBookException.ExceptionType.CANNOT_EXECUTE_QUERY, "Failed to execute query");
+			statement.executeUpdate(sql0);
 		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 
 	}
 	public int updatePhonenumberOfContact(String phoneNumber, int id) {
