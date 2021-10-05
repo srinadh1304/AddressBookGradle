@@ -1,6 +1,6 @@
 package com.bridgelabz.addressbookgradle;
 
-public class AddressPojo {
+public class Address {
 	
 	private int contact_id;
 	private String address;
@@ -8,7 +8,7 @@ public class AddressPojo {
 	private String state;
 	private int zip;
 	
-	public AddressPojo(int contact_id, String address, String city, String state, int zip) {
+	public Address(int contact_id, String address, String city, String state, int zip) {
 		super();
 		this.contact_id = contact_id;
 		this.address = address;
