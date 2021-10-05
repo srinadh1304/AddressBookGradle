@@ -83,7 +83,7 @@ public class AddressBookDBService {
 		}
 	}
 
-	public void writeIntoContact(Contact contact) {
+	public void addContact(Contact contact) {
 		String sql0 = String.format("INSERT INTO `contacts`\n"
 				+ "(`firstName`,`lastName`,`phoneNumber`,`email`)\n"
 				+ "VALUES ('%s','%s','%s','%s');",contact.getFirstName(),contact.getLastName(),contact.getPhoneNumber(),contact.getEmail());

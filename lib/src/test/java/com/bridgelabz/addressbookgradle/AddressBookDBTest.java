@@ -27,7 +27,7 @@ public class AddressBookDBTest {
 		Contact contactObject=new Contact("chandra", "t", "8463934331", "chandra@gmail.com",date1);
 		AddressBookDBService addressBook = new AddressBookDBService();
 		long initialSize  = addressBook.readData();
-		addressBook.writeIntoContact(contactObject);
+		addressBook.addContact(contactObject);
 		long updatedSize=addressBook.readData();
 		Assert.assertEquals(initialSize+1, updatedSize);
 	}
@@ -66,7 +66,7 @@ public class AddressBookDBTest {
 		Contact contact = new Contact("Mark","Wade","7894561230","m@m.com");
 		AddressBookDBService address=new AddressBookDBService();
 		long initialSize  = address.readData();
-		address.writeIntoContact(contact);
+		address.addContact(contact);
 		long updatedSize=address.readData();
 		Assert.assertEquals(initialSize+1, updatedSize);
 	}
