@@ -1,10 +1,10 @@
 package com.bridgelabz.addressbookgradle;
 
-public class AddressBookTypePojo {
+public class AddressBookType {
 	private String addressBook_name;
 	private String addressBook_type;
 	private int contact_id;
-	public AddressBookTypePojo(String addressBook_name, String addressBook_type, int contact_id) {
+	public AddressBookType(String addressBook_name, String addressBook_type, int contact_id) {
 		super();
 		this.addressBook_name = addressBook_name;
 		this.addressBook_type = addressBook_type;
