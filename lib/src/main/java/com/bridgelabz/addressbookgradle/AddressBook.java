@@ -1,6 +1,6 @@
 package com.bridgelabz.addressbookgradle;
 
-public class AddressBookPojo {
+public class AddressBook {
 	private String addressBook_name;
 
 	public String getAddressBook_name() {
