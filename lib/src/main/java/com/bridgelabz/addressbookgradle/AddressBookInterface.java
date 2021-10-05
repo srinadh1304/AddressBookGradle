@@ -3,7 +3,7 @@ package com.bridgelabz.addressbookgradle;
 import com.bridgelabz.addressbookgradle.IOServiceEnum.IOService;;
 
 
-public interface AddressBookIF {
+public interface AddressBookInterface {
 	public void writeDataToFile(IOService ioService);
 	public void readDataFromFile();
 	public void writeDataToCsvFile();

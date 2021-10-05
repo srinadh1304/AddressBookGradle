@@ -6,7 +6,7 @@ import java.util.Scanner;
 import java.util.*;
 
 import com.bridgelabz.addressbookgradle.IOServiceEnum.IOService;
-public class AddressBook implements AddressBookIF {
+public class AddressBook implements AddressBookInterface {
 	
 	private static List<Contact> contacts;
 	private static HashMap<String, LinkedList<Contact>> contactsByCity;
