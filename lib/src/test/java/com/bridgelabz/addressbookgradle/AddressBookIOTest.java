@@ -17,7 +17,7 @@ import com.google.gson.Gson;;
 public class AddressBookIOTest {
 	
 
-	static AddressBook addressBook = new AddressBook();
+	static AddressBookImplementation addressBook = new AddressBookImplementation();
 	
 	
 	@Test
@@ -41,7 +41,7 @@ public class AddressBookIOTest {
 		Contact contact2 = new Contact("Chandra","t","Tenali","Andhra","522201","8463934331","chandra@gmail.com");
 		addressBook.addContact(contact2);
 		
-		AddressBook book1 = new AddressBook();
+		AddressBookImplementation book1 = new AddressBookImplementation();
 		book1.addContact(contact1);
 		book1.addContact(contact2);
 		book1.writeDataToFile(IOService.FILE_IO);
@@ -61,7 +61,7 @@ public class AddressBookIOTest {
 		Contact contact2 = new Contact("Chandra","t","Tenali","Andhra","522201","8463934331","chandra@gmail.com");
 		addressBook.addContact(contact2);
 		
-		AddressBook book1 = new AddressBook();
+		AddressBookImplementation book1 = new AddressBookImplementation();
 		book1.addContact(contact1);
 		book1.addContact(contact2);
 		book1.writeDataToFile(IOService.CSV_IO);
@@ -81,7 +81,7 @@ public class AddressBookIOTest {
 		Contact contact2 = new Contact("Chandra","t","Tenali","Andhra","522201","8463934331","chandra@gmail.com");
 		addressBook.addContact(contact2);
 		
-		AddressBook book1 = new AddressBook();
+		AddressBookImplementation book1 = new AddressBookImplementation();
 		book1.addContact(contact1);
 		book1.addContact(contact2);
 		book1.writeDataToFile(IOService.JSON_IO);

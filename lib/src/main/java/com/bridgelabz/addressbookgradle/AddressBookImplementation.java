@@ -6,17 +6,17 @@ import java.util.Scanner;
 import java.util.*;
 
 import com.bridgelabz.addressbookgradle.IOServiceEnum.IOService;
-public class AddressBook implements AddressBookInterface {
+public class AddressBookImplementation implements AddressBookInterface {
 	
 	private static List<Contact> contacts;
 	private static HashMap<String, LinkedList<Contact>> contactsByCity;
 	private static HashMap<String, LinkedList<Contact>> contactsByState;
 	private AddressBookDBService addressBookDBService;
 	
-	public AddressBook() {
-		AddressBook.contacts = new LinkedList<Contact>();
-		AddressBook.contactsByCity = new HashMap<>();
-		AddressBook.contactsByState = new HashMap<>();
+	public AddressBookImplementation() {
+		AddressBookImplementation.contacts = new LinkedList<Contact>();
+		AddressBookImplementation.contactsByCity = new HashMap<>();
+		AddressBookImplementation.contactsByState = new HashMap<>();
 		this.numOfContacts = 0;
 	}
 	

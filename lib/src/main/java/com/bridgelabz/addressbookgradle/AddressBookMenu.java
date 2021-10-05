@@ -5,30 +5,30 @@ import java.util.Scanner;
 import com.bridgelabz.addressbookgradle.IOServiceEnum.IOService;
 public class AddressBookMenu {
 	
-	private static HashMap<String, AddressBook> addressBooks;
+	private static HashMap<String, AddressBookImplementation> addressBooks;
 	public AddressBookMenu() {
 		this.addressBooks = new HashMap<>();
 	}
-	public void add(String name, AddressBook addressBook) {
+	public void add(String name, AddressBookImplementation addressBook) {
 		addressBooks.put(name,addressBook);
 		
 	}
-	public AddressBook get(String book) {
+	public AddressBookImplementation get(String book) {
 		return addressBooks.get(book);
 	}
 	public void searchAcrossByCity(String city) {
-		for(AddressBook addressBook : addressBooks.values()) {
+		for(AddressBookImplementation addressBook : addressBooks.values()) {
 			addressBook.findContactInCity(city);
 		}
 	}
 	
 	public void searchAcrossByState(String state) {
-		for(AddressBook addressBook : addressBooks.values()) {
+		for(AddressBookImplementation addressBook : addressBooks.values()) {
 			addressBook.findContactInState(state);
 		}
 	}
 	public void countByState() {
-		for(AddressBook addressBook : addressBooks.values()) {
+		for(AddressBookImplementation addressBook : addressBooks.values()) {
 			addressBook.printCountByState();
 		}
 		
@@ -36,12 +36,12 @@ public class AddressBookMenu {
 
 
 	public void countByCity() {
-		for(AddressBook addressBook : addressBooks.values()) {
+		for(AddressBookImplementation addressBook : addressBooks.values()) {
 			addressBook.printCountByCity();
 		}		
 	}
 	
-	public static void addressMenu(AddressBook addressBook) {
+	public static void addressMenu(AddressBookImplementation addressBook) {
 		Scanner sc = new Scanner(System.in);
 		int option = 0;
 		boolean exit = true;
@@ -91,22 +91,22 @@ public class AddressBookMenu {
 		}
 	}
 	public void sortByName() {		
-		for(AddressBook addressBook : addressBooks.values()) {
+		for(AddressBookImplementation addressBook : addressBooks.values()) {
 			addressBook.sortByName();
 		}
 	}
 	public void sortByZip() {		
-		for(AddressBook addressBook : addressBooks.values()) {
+		for(AddressBookImplementation addressBook : addressBooks.values()) {
 			addressBook.sortByZip();
 		}
 	}
 	public void sortByCity() {		
-		for(AddressBook addressBook : addressBooks.values()) {
+		for(AddressBookImplementation addressBook : addressBooks.values()) {
 			addressBook.sortByCity();
 		}
 	}
 	public void sortByState() {		
-		for(AddressBook addressBook : addressBooks.values()) {
+		for(AddressBookImplementation addressBook : addressBooks.values()) {
 			addressBook.sortByName();
 		}
 	}

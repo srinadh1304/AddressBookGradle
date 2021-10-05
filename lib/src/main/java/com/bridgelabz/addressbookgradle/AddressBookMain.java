@@ -16,7 +16,7 @@ public class AddressBookMain {
 			case 1: 
 				System.out.println("Enter the address book name");
 				String name = sc.next();
-				AddressBook addressBook = new AddressBook();
+				AddressBookImplementation addressBook = new AddressBookImplementation();
 				addressBookList.add(name, addressBook);
 				break;
 			case 2:
@@ -25,7 +25,7 @@ public class AddressBookMain {
 				if(addressBookList.get(book)==null)
 					System.out.println("Address Book does not exist");
 				else {
-					AddressBook bookName = addressBookList.get(book);
+					AddressBookImplementation bookName = addressBookList.get(book);
 					addressBookList.addressMenu(bookName);
 				}
 				break;
@@ -76,7 +76,7 @@ public class AddressBookMain {
 
 	}
 
-	public static void addContact(AddressBook addressBook) {
+	public static void addContact(AddressBookImplementation addressBook) {
 		Scanner scannerObject=new Scanner(System.in);
 		System.out.println("Enter contact details");
 		System.out.println("Enter first name");
