@@ -3,10 +3,10 @@ package com.bridgelabz.addressbookgradle;
 import java.util.HashMap;
 import java.util.Scanner;
 import com.bridgelabz.addressbookgradle.IOServiceEnum.IOService;
-public class AddressBookList {
+public class AddressBookMenu {
 	
 	private static HashMap<String, AddressBook> addressBooks;
-	public AddressBookList() {
+	public AddressBookMenu() {
 		this.addressBooks = new HashMap<>();
 	}
 	public void add(String name, AddressBook addressBook) {

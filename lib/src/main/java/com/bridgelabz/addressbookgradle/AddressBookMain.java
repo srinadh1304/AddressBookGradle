@@ -3,7 +3,7 @@ package com.bridgelabz.addressbookgradle;
 import java.util.Scanner;
 
 public class AddressBookMain {
-	public static AddressBookList addressBookList = new AddressBookList();
+	public static AddressBookMenu addressBookList = new AddressBookMenu();
 	
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book System");
