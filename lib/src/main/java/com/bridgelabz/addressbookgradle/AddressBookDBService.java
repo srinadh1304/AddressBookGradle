@@ -83,11 +83,11 @@ public class AddressBookDBService {
 		}
 	}
 
-	public void writeIntoContact(ContactPojo contact) {
+	public void writeIntoContact(Contact contact) {
 		String sql0 = String.format("INSERT INTO `contacts`\n"
 				+ "(`firstName`,`lastName`,`phoneNumber`,`email`)\n"
 				+ "VALUES ('%s','%s','%s','%s');",contact.getFirstName(),contact.getLastName(),contact.getPhoneNumber(),contact.getEmail());
-		List<ContactPojo> addressBookData = new ArrayList<ContactPojo>();
+		List<Contact> addressBookData = new ArrayList<Contact>();
 		try (Connection connection = this.getConnection()) {
 			Statement statement = connection.createStatement();
 			statement.executeUpdate(sql0);

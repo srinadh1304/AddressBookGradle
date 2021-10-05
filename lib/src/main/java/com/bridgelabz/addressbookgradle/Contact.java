@@ -1,6 +1,6 @@
 package com.bridgelabz.addressbookgradle;
 
-public class ContactPojo {
+public class Contact {
 	private int contact_id;
 	private String firstName;
 	private String lastName;
@@ -13,7 +13,7 @@ public class ContactPojo {
 	public void setDate_added(String date_added) {
 		this.date_added = date_added;
 	}
-	public ContactPojo(String firstName, String lastName, String phoneNumber, String email,String date_added) {
+	public Contact(String firstName, String lastName, String phoneNumber, String email,String date_added) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -21,7 +21,7 @@ public class ContactPojo {
 		this.email = email;
 		this.date_added=date_added;
 	}
-	public ContactPojo(String firstName, String lastName, String phoneNumber, String email) {
+	public Contact(String firstName, String lastName, String phoneNumber, String email) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -58,7 +58,7 @@ public class ContactPojo {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public ContactPojo(int contact_id, String firstName, String lastName, String phoneNumber, String email) {
+	public Contact(int contact_id, String firstName, String lastName, String phoneNumber, String email) {
 		super();
 		this.contact_id = contact_id;
 		this.firstName = firstName;

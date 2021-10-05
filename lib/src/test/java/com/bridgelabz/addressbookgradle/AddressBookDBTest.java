@@ -24,7 +24,7 @@ public class AddressBookDBTest {
 	public void givenAContact_WhenInserted_IntoContact_ShouldGetUpdatedSize()
 	{
 		String date1 = "2018-01-02";
-		ContactPojo contactObject=new ContactPojo("chandra", "t", "8463934331", "chandra@gmail.com",date1);
+		Contact contactObject=new Contact("chandra", "t", "8463934331", "chandra@gmail.com",date1);
 		AddressBookDBService addressBook = new AddressBookDBService();
 		long initialSize  = addressBook.readData();
 		addressBook.writeIntoContact(contactObject);
@@ -63,7 +63,7 @@ public class AddressBookDBTest {
 	}
 	@Test
 	public void givenEmployeePayrollInDB_whenAddedShouldMatchDB() {
-		ContactPojo contact = new ContactPojo("Mark","Wade","7894561230","m@m.com");
+		Contact contact = new Contact("Mark","Wade","7894561230","m@m.com");
 		AddressBookDBService address=new AddressBookDBService();
 		long initialSize  = address.readData();
 		address.writeIntoContact(contact);
